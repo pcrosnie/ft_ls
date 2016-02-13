@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:04:56 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/13 12:10:30 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/13 17:11:26 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ t_file	*ft_retrieve(DIR *dir, t_file *begin)
 		adr = adr->next;
 		ptr->info = (struct stat *)malloc(sizeof(struct stat));
 	}
-	free(ptr->info);
-	free(ptr);
 	ptr = NULL;
 	return (begin);
 }
