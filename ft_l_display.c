@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 12:17:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/13 18:56:02 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/13 19:21:10 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,35 @@ int		ft_set_nb(long nb)
 	return (0);
 }
 
+char	*ft_set_hour(int rest)
+{
+	char *str;
+	int	nb;
+
+	nb = rest % 3600;
+	rest = (rest / 3600) + 1;
+	nb = nb / 60;
+	str = ft_itoa(rest);
+	str[ft_strlen(str)] = ':';
+	str = ft_strjoin(str, ft_itoa(nb));
+	return (str);
+}
+
+
 
 char	*ft_set_date(long nb, int rest)
 {
 //	char *tmp;
-	char *str;
-	if (rest)
-	{
+	char *str = NULL;
 		str = ft_set_month(nb);
 		nb = ft_set_nb(nb);
 		str = ft_strjoin(str, ft_itoa(nb));
-		ft_putchar('\n');
-		ft_putstr(str);
-		ft_putchar('\n');
-	}
-		return (NULL);
+		str[ft_strlen(str)] = ' ';
+		str = ft_strjoin(str, ft_set_hour(rest));
+//		ft_putchar('\n');
+//		ft_putstr(str);
+//		ft_putchar('\n');
+		return (str);
 }
 
 t_file	*ft_retrieves_date(t_file *begin)
@@ -110,6 +124,8 @@ t_file	*ft_retrieves_date(t_file *begin)
 			i++;
 		}
 		ptr->date = ft_set_date(nb, rest);
+		ft_putstr(ptr->date);
+		ft_putchar('\n');
 		ft_putstr(ptr->name);
 		ft_putchar('\n');
 		ft_putnbr(nb);
