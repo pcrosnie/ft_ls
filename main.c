@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:22:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/12 16:06:05 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/13 11:44:41 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		main(int argc, char **argv)
 	{
 		dir = opendir(argv[1]);
 		begin = ft_retrieve(dir, begin);
-		//begin = ft_sort_lex(begin);
+		begin = ft_sort_lex(begin);
 		ft_print_list(begin);
 	}
 	return (0);

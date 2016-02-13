@@ -6,7 +6,7 @@
 #    By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 17:07:03 by pcrosnie          #+#    #+#              #
-#    Updated: 2015/12/03 12:09:40 by pcrosnie         ###   ########.fr        #
+#    Updated: 2016/02/13 11:51:03 by pcrosnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = libft.a
 SRC += ft_atoi.c
 SRC += ft_strsplit.c
 SRC += ft_itoa.c
+SRC += ft_power.c
 SRC += ft_strtrim.c
 SRC += ft_bzero.c
 SRC += ft_isalnum.c
