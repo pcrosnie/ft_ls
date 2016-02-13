@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 12:17:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/13 19:21:10 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/13 19:33:06 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,31 +73,42 @@ int		ft_set_nb(long nb)
 char	*ft_set_hour(int rest)
 {
 	char *str;
+	char *tmp;
 	int	nb;
 
 	nb = rest % 3600;
 	rest = (rest / 3600) + 1;
 	nb = nb / 60;
-	str = ft_itoa(rest);
+	if (rest > 9)
+		str = ft_itoa(rest);
+	else
+	{
+		str = (char *)malloc(sizeof(char) * 2);
+		str[0] = '0';
+		str[1] = rest + 48;
+	}
 	str[ft_strlen(str)] = ':';
-	str = ft_strjoin(str, ft_itoa(nb));
+	if (nb > 9)
+		str = ft_strjoin(str, ft_itoa(nb));
+	else
+	{
+		tmp = (char *)malloc(sizeof(char) * 2);
+		tmp[0] = '0';
+		tmp[1] = nb + 48;
+		str = ft_strjoin(str, tmp);
+		free(tmp);
+	}
 	return (str);
 }
 
-
-
 char	*ft_set_date(long nb, int rest)
 {
-//	char *tmp;
 	char *str = NULL;
 		str = ft_set_month(nb);
 		nb = ft_set_nb(nb);
 		str = ft_strjoin(str, ft_itoa(nb));
 		str[ft_strlen(str)] = ' ';
 		str = ft_strjoin(str, ft_set_hour(rest));
-//		ft_putchar('\n');
-//		ft_putstr(str);
-//		ft_putchar('\n');
 		return (str);
 }
 
@@ -109,7 +120,7 @@ t_file	*ft_retrieves_date(t_file *begin)
 	t_file *ptr;
 
 	ptr = begin;
-	while (ptr != NULL)
+	while (ptr->next != NULL)
 	{
 		i = -2;
 		nb = ptr->info->st_mtimespec.tv_sec;
