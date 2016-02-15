@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 12:17:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/15 12:19:31 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/15 16:08:23 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,10 @@ char	*ft_set_hour(int rest)
 char	*ft_set_date(long nb, int rest)
 {
 	char *str = NULL;
-	ft_putnbr(nb);
 		str = ft_set_month(nb);
 		nb = ft_set_nb(nb);
+		if (nb < 10)
+			str = ft_strjoin(str, " ");
 		str = ft_strjoin(str, ft_itoa(nb));
 		str[ft_strlen(str)] = ' ';
 		str = ft_strjoin(str, ft_set_hour(rest));
@@ -117,7 +118,7 @@ t_file	*ft_retrieves_date(t_file *begin)
 {
 	long nb;
 	int i;
-	int rest;
+//	int rest;
 	t_file *ptr;
 
 	ptr = begin;
@@ -125,9 +126,7 @@ t_file	*ft_retrieves_date(t_file *begin)
 	{
 		i = -2;
 		nb = ptr->info->st_time;
-		ft_putnbr(nb);
-		ft_putchar('\n');
-		rest = nb % (3600 * 24);
+/*		rest = nb % (3600 * 24);
 		nb = nb / (3600 * 24);
 		while (nb > 365)
 		{
@@ -136,8 +135,8 @@ t_file	*ft_retrieves_date(t_file *begin)
 			else
 				nb = nb - 365;
 			i++;
-		}
-		ptr->date = ft_set_date(nb, rest);
+		}*/
+		ptr->date = ft_strsub(ctime(&nb), 4, 12);
 		ft_putstr(ptr->date);
 		ft_putchar(' ');
 		ft_putstr(ptr->name);

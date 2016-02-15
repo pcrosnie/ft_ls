@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:22:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/15 11:18:51 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/15 13:30:09 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		dir = opendir(argv[1]);
-		begin = ft_retrieve(dir, begin);
+		begin = ft_retrieve(dir, begin, argv[1]);
 		begin = ft_sort_lex(begin);
 		begin = ft_retrieves_date(begin);
 //		begin = ft_l_display(begin, argv[1]);

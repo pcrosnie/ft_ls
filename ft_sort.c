@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:04:56 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/15 12:19:28 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/15 13:37:18 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_stat_cpy(t_info *info, struct stat *ptr)
 	info->st_gen = ptr->st_gen;
 }
 
-t_file	*ft_retrieve(DIR *dir, t_file *begin)
+t_file	*ft_retrieve(DIR *dir, t_file *begin, char *path)
 {
 	struct dirent *file;
 	struct stat *tmp_info;
@@ -44,7 +44,9 @@ t_file	*ft_retrieve(DIR *dir, t_file *begin)
 	ptr->info = (t_info *)malloc(sizeof(t_info));
 	while ((file = readdir(dir)))
 	{
-		stat(file->d_name, tmp_info);
+		ptr->path = ft_strdup(path);
+		(ptr->path[ft_strlen(ptr->path)] != '/') ? ptr->path[ft_strlen(ptr->path)] = '/' : 0;
+		stat(ft_strjoin(ptr->path, file->d_name), tmp_info);
 		ft_stat_cpy(ptr->info, tmp_info);
 		ptr->name = file->d_name;
 		ptr->next = (t_file *)malloc(sizeof(t_file));

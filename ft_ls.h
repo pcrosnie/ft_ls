@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:24:20 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/15 12:14:01 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/15 13:27:30 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_file
 {
 	char *name;
 	char *date;
+	char *path;
 	struct s_info *info;
 	struct s_file *next;
 	struct s_file *prev;
@@ -46,7 +47,7 @@ typedef struct s_info
 	uint32_t        st_gen;
 }				t_info;
 
-t_file *ft_retrieve(DIR *dir, t_file *begin);
+t_file *ft_retrieve(DIR *dir, t_file *begin, char *path);
 t_file *ft_sort_lex(t_file *begin);
 t_file *ft_l_display(t_file *begin);
 t_file *ft_retrieves_date(t_file *begin);
