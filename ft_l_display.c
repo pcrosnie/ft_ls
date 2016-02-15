@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 12:17:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/15 11:18:00 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/15 12:19:31 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ char	*ft_set_hour(int rest)
 char	*ft_set_date(long nb, int rest)
 {
 	char *str = NULL;
+	ft_putnbr(nb);
 		str = ft_set_month(nb);
 		nb = ft_set_nb(nb);
 		str = ft_strjoin(str, ft_itoa(nb));
@@ -124,6 +125,8 @@ t_file	*ft_retrieves_date(t_file *begin)
 	{
 		i = -2;
 		nb = ptr->info->st_time;
+		ft_putnbr(nb);
+		ft_putchar('\n');
 		rest = nb % (3600 * 24);
 		nb = nb / (3600 * 24);
 		while (nb > 365)
@@ -136,12 +139,8 @@ t_file	*ft_retrieves_date(t_file *begin)
 		}
 		ptr->date = ft_set_date(nb, rest);
 		ft_putstr(ptr->date);
-		ft_putchar('\n');
+		ft_putchar(' ');
 		ft_putstr(ptr->name);
-		ft_putchar('\n');
-		ft_putnbr(nb);
-		ft_putchar('\n');
-		ft_putnbr(rest);
 		ft_putchar('\n');
 		ptr = ptr->next;
 	}
