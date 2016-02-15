@@ -1,50 +1,524 @@
+Feb 13 18:57
+
 43
-16844
-.
-32833
-1455372487
-..
-4921
-1455359816
-.ft_l_display.c.swp
-48461
-1455372467
-.ft_ls.h.swp
-45666
-1455372110
-.git
-32834
-1455372489
-.main.c.swp
-48082
-1455372489
+64632
+Jan 0 01:00
+
+0
+0
+Feb 13 12:22
 Makefile
-44846
-1455362534
-file
-38621
-1455372502
-ft_l_display.c
-49049
-1455372463
-ft_ls
-49202
-1455372487
-ft_ls.h
-48660
-1455372089
-ft_sort.c
-48476
-1455370737
-libft
-32903
-1455372487
+43
+40934
+Jan 0 01:00
+er.«¬
+0
+0
+Jan 0 01:00
+ft_lstdelone.o
+0
+0
+Jan 0 01:00
+ft_lstiter.c
+0
+0
+Jan 0 01:00
+ft_lstiter.o
+0
+0
+Jan 0 01:00
+ft_lstmap.c
+0
+0
+Jan 0 01:00
+ft_lstmap.o
+0
+0
+Jan 0 01:00
+ft_lstnew.c
+0
+0
+Jan 0 01:00
+ft_lstnew.o
+0
+0
+Jan 0 01:00
+ft_memalloc.c
+0
+0
+Jan 0 01:00
+ft_memalloc.o
+0
+0
+Jan 0 01:00
+ft_memccpy.c
+0
+0
+Jan 0 01:00
+ft_memccpy.o
+0
+0
+Jan 0 01:00
+ft_memchr.c
+0
+0
+Jan 0 01:00
+ft_memchr.o
+0
+0
+Jan 0 01:00
+ft_memcmp.c
+0
+0
+Jan 0 01:00
+ft_memcmp.o
+0
+0
+Jan 0 01:00
+ft_memcpy.c
+0
+0
+Jan 0 01:00
+ft_memcpy.o
+0
+0
+Jan 0 01:00
+ft_memdel.c
+0
+0
+Jan 0 01:00
+ft_memdel.o
+0
+0
+Jan 0 01:00
+ft_memmove.c
+0
+0
+Jan 0 01:00
+ft_memmove.o
+0
+0
+Jan 0 01:00
+ft_memset.c
+0
+0
+Jan 0 01:00
+ft_memset.o
+0
+0
+Jan 0 01:00
+ft_power.c
+0
+0
+Jan 0 01:00
+ft_power.o
+0
+0
+Jan 0 01:00
+ft_print_char_tab.c
+0
+0
+Jan 0 01:00
+ft_putchar.c
+0
+0
+Jan 0 01:00
+ft_putchar.o
+0
+0
+Jan 0 01:00
+ft_putchar_fd.c
+0
+0
+Jan 0 01:00
+ft_putchar_fd.o
+0
+0
+Jan 0 01:00
+ft_putendl.c
+0
+0
+Jan 0 01:00
+ft_putendl.o
+0
+0
+Jan 0 01:00
+ft_putendl_fd.c
+0
+0
+Jan 0 01:00
+ft_putendl_fd.o
+0
+0
+Jan 0 01:00
+ft_putnbr.c
+0
+0
+Jan 0 01:00
+ft_putnbr.o
+0
+0
+Jan 0 01:00
+ft_putnbr_fd.c
+0
+0
+Jan 0 01:00
+ft_putnbr_fd.o
+0
+0
+Jan 0 01:00
+ft_putstr.c
+0
+0
+Jan 0 01:00
+ft_putstr.o
+0
+0
+Jan 0 01:00
+ft_putstr_fd.c
+0
+0
+Jan 0 01:00
+ft_putstr_fd.o
+0
+0
+Jan 0 01:00
+ft_strcat.c
+0
+0
+Jan 0 01:00
+ft_strcat.o
+0
+0
+Jan 0 01:00
+ft_strchr.c
+0
+0
+Jan 0 01:00
+ft_strchr.o
+0
+0
+Jan 0 01:00
+ft_strclr.c
+0
+0
+Jan 0 01:00
+ft_strclr.o
+0
+0
+Jan 0 01:00
+ft_strcmp.c
+0
+0
+Jan 0 01:00
+ft_strcmp.o
+0
+0
+Jan 0 01:00
+ft_strcpy.c
+0
+0
+Jan 0 01:00
+ft_strcpy.o
+0
+0
+Jan 0 01:00
+ft_strdel.c
+0
+0
+Jan 0 01:00
+ft_strdel.o
+0
+0
+Jan 0 01:00
+ft_strdup.c
+0
+0
+Jan 0 01:00
+ft_strdup.o
+0
+0
+Jan 0 01:00
+ft_strequ.c
+0
+0
+Jan 0 01:00
+ft_strequ.o
+0
+0
+Jan 0 01:00
+ft_striter.c
+0
+0
+Jan 0 01:00
+ft_striter.o
+0
+0
+Jan 0 01:00
+ft_striteri.c
+0
+0
+Jan 0 01:00
+ft_striteri.o
+0
+0
+Jan 0 01:00
+ft_strjoin.c
+0
+0
+Jan 0 01:00
+ft_strjoin.o
+0
+0
+Jan 0 01:00
+ft_strlcat.c
+0
+0
+Jan 0 01:00
+ft_strlcat.o
+0
+0
+Jan 0 01:00
+ft_strlen.c
+0
+0
+Jan 0 01:00
+ft_strlen.o
+0
+0
+Jan 0 01:00
+ft_strmap.c
+0
+0
+Jan 0 01:00
+ft_strmap.o
+0
+0
+Jan 0 01:00
+ft_strmapi.c
+0
+0
+Jan 0 01:00
+ft_strmapi.o
+0
+0
+Jan 0 01:00
+ft_strncat.c
+0
+0
+Jan 0 01:00
+ft_strncat.o
+0
+0
+Feb 13 19:35
+ft_strncmp.c
+43
+66953
+Jan 0 01:00
+ft_strncmp.c
+0
+0
+Jan 0 01:00
+ft_strncmp.o
+0
+0
+Jan 0 01:00
+ft_strncpy.c
+0
+0
+Jan 0 01:00
+ft_strncpy.c
+0
+0
+Jan 0 01:00
+ft_strncpy.o
+0
+0
+Jan 0 01:00
+ft_strncpy.o
+0
+0
+Jan 0 01:00
+ft_strnequ.c
+0
+0
+Jan 0 01:00
+ft_strnequ.c
+0
+0
+Jan 0 01:00
+ft_strnequ.o
+0
+0
+Jan 0 01:00
+ft_strnequ.o
+0
+0
+Jan 0 01:00
+ft_strnew.c
+0
+0
+Jan 0 01:00
+ft_strnew.c
+0
+0
+Jan 0 01:00
+ft_strnew.o
+0
+0
+Jan 0 01:00
+ft_strnew.o
+0
+0
+Jan 0 01:00
+ft_strnstr.c
+0
+0
+Jan 0 01:00
+ft_strnstr.c
+0
+0
+Jan 0 01:00
+ft_strnstr.o
+0
+0
+Jan 0 01:00
+ft_strnstr.o
+0
+0
+Jan 0 01:00
+ft_strrchr.c
+0
+0
+Jan 0 01:00
+ft_strrchr.c
+0
+0
+Jan 0 01:00
+ft_strrchr.o
+0
+0
+Jan 0 01:00
+ft_strrchr.o
+0
+0
+Jan 0 01:00
+ft_strrev.c
+0
+0
+Jan 0 01:00
+ft_strrev.c
+0
+0
+Jan 0 01:00
+ft_strsplit.c
+0
+0
+Jan 0 01:00
+ft_strsplit.c
+0
+0
+Jan 0 01:00
+ft_strsplit.o
+0
+0
+Jan 0 01:00
+ft_strsplit.o
+0
+0
+Jan 0 01:00
+ft_strstr.c
+0
+0
+Jan 0 01:00
+ft_strstr.c
+0
+0
+Jan 0 01:00
+ft_strstr.o
+0
+0
+Jan 0 01:00
+ft_strstr.o
+0
+0
+Jan 0 01:00
+ft_strsub.c
+0
+0
+Jan 0 01:00
+ft_strsub.c
+0
+0
+Jan 0 01:00
+ft_strsub.o
+0
+0
+Jan 0 01:00
+ft_strsub.o
+0
+0
+Jan 0 01:00
+ft_strtrim.c
+0
+0
+Jan 0 01:00
+ft_strtrim.c
+0
+0
+Jan 0 01:00
+ft_strtrim.o
+0
+0
+Jan 0 01:00
+ft_strtrim.o
+0
+0
+Jan 0 01:00
+ft_tolower.c
+0
+0
+Jan 0 01:00
+ft_tolower.c
+0
+0
+Jan 0 01:00
+ft_tolower.o
+0
+0
+Jan 0 01:00
+ft_tolower.o
+0
+0
+Jan 0 01:00
+ft_toupper.c
+0
+0
+Jan 0 01:00
+ft_toupper.c
+0
+0
+Jan 0 01:00
+ft_toupper.o
+0
+0
+Jan 0 01:00
+ft_toupper.o
+0
+0
+Jan 0 01:00
 libft.a
-33223
-1455191821
+0
+0
+Feb 11 12:57
+libft.a
+41
+43021
+Feb 11 12:56
 libft.h
-33152
-1455191805
-main.c
-49124
-1455372483
+41
+43005
+Jan 0 01:00
+mp.o
+0
+0

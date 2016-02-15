@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:24:20 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/13 15:01:29 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/15 11:13:46 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,27 @@ typedef struct s_file
 {
 	char *name;
 	char *date;
-	struct stat *info;
+	struct s_info *info;
 	struct s_file *next;
 	struct s_file *prev;
 }				t_file;
+
+typedef struct s_info
+{
+	dev_t           st_dev;           /* ID of device containing file */
+	mode_t          st_mode;          /* Mode of file (see below) */
+	nlink_t         st_nlink;         /* Number of hard links */
+	ino_t           st_ino;           /* File serial number */
+	uid_t           st_uid;           /* User ID of the file */
+	gid_t           st_gid;           /* Group ID of the file */
+	dev_t           st_rdev;          /* Device ID */
+	long			st_time;
+	off_t           st_size;          /* file size, in bytes */
+	blkcnt_t        st_blocks;        /* blocks allocated for file */
+	blksize_t       st_blksize;       /* optimal blocksize for I/O */
+	uint32_t        st_flags;         /* user defined flags for file */
+	uint32_t        st_gen;
+}				t_info;
 
 t_file *ft_retrieve(DIR *dir, t_file *begin);
 t_file *ft_sort_lex(t_file *begin);

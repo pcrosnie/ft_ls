@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 12:17:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/13 19:33:06 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/15 11:18:00 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ t_file	*ft_retrieves_date(t_file *begin)
 	while (ptr->next != NULL)
 	{
 		i = -2;
-		nb = ptr->info->st_mtimespec.tv_sec;
+		nb = ptr->info->st_time;
 		rest = nb % (3600 * 24);
 		nb = nb / (3600 * 24);
 		while (nb > 365)

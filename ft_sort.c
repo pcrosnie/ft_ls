@@ -6,15 +6,33 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:04:56 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/13 17:11:26 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/15 11:19:53 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
+void	ft_stat_cpy(t_info *info, struct stat *ptr)
+{
+	info->st_dev = ptr->st_dev;
+	info->st_mode = ptr->st_mode;
+	info->st_nlink = ptr->st_nlink;
+	info->st_ino = ptr->st_ino;
+	info->st_uid = ptr->st_uid;
+	info->st_gid = ptr->st_gid;
+	info->st_rdev = ptr->st_rdev;
+	info->st_time = ptr->st_mtimespec.tv_sec;
+	info->st_size = ptr->st_size;
+	info->st_blocks = ptr->st_blocks;
+	info->st_blksize = ptr->st_blksize;
+	info->st_flags = ptr->st_flags;
+	info->st_gen = ptr->st_gen;
+}
+
 t_file	*ft_retrieve(DIR *dir, t_file *begin)
 {
 	struct dirent *file;
+	struct stat *tmp_info;
 	t_file *adr;
 	t_file *ptr;
 	
@@ -22,16 +40,18 @@ t_file	*ft_retrieve(DIR *dir, t_file *begin)
 	ptr = begin;
 	adr = begin;
 	ptr->prev = NULL;
-	ptr->info = (struct stat *)malloc(sizeof(struct stat));
+	tmp_info = (struct stat *)malloc(sizeof(struct stat));
+	ptr->info = (t_info *)malloc(sizeof(t_info));
 	while ((file = readdir(dir)))
 	{
-		stat(file->d_name, ptr->info);
+		stat(file->d_name, tmp_info);
+		ft_stat_cpy(ptr->info, tmp_info);
 		ptr->name = file->d_name;
 		ptr->next = (t_file *)malloc(sizeof(t_file));
 		ptr = ptr->next;
 		ptr->prev = adr;
 		adr = adr->next;
-		ptr->info = (struct stat *)malloc(sizeof(struct stat));
+		ptr->info = (t_info *)malloc(sizeof(t_info));
 	}
 	ptr = NULL;
 	return (begin);
@@ -40,7 +60,7 @@ t_file	*ft_retrieve(DIR *dir, t_file *begin)
 void	ft_swap(t_file *ptr, t_file *ptr2)
 {
 	char *tmp;
-	struct stat *tmp_info;
+	struct s_info *tmp_info;
 
 	tmp_info = ptr->info;
 	tmp = ptr->name;

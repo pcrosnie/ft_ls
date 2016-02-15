@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:22:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/13 15:58:29 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/15 11:18:51 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_print_list(t_file *ptr)
 		ft_putchar('\n');
 		ft_putnbr(ptr->info->st_ino);
 		ft_putchar('\n');
-		ft_putnbr(ptr->info->st_mtimespec.tv_sec);
+		ft_putnbr(ptr->info->st_time);
 		ft_putchar('\n');
 		ptr = ptr->next;
 	}
