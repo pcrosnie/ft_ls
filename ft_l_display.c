@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 12:17:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/16 11:54:09 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/16 16:14:53 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,26 @@ void	ft_l_display(t_file *begin)
 {
 	t_file *ptr;
 	int i;
+	int tmp;
 
 	i = 0;
 	ptr = begin;
 	ft_set_max_bytes_size(begin);
 	while (ptr->next != NULL)
 	{
-		i = ft_strlen(ft_itoa(ptr->info->st_size));
-		ft_putnbr(ptr->info->st_size);
-		while (i <= ptr->max_bytes_size)
+		tmp = ft_strlen(ft_itoa(ptr->info->st_size));
+		i = 0;
+		ft_putstr(ptr->hard_links);
+		ft_putstr(ptr->usr_name);
+		ft_putstr(ptr->group_name);
+		ft_putchar(' ');
+		while (i <= ptr->max_bytes_size - tmp)
 		{
 			ft_putchar(' ');
 			i++;
 		}
+		ft_putnbr(ptr->info->st_size);
+		ft_putchar(' ');
 		ft_putstr(ptr->date);
 		ft_putchar(' ');
 		ft_putstr(ptr->name);
