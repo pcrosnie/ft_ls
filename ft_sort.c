@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:04:56 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/15 13:37:18 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/16 11:29:41 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_file	*ft_retrieve(DIR *dir, t_file *begin, char *path)
 		(ptr->path[ft_strlen(ptr->path)] != '/') ? ptr->path[ft_strlen(ptr->path)] = '/' : 0;
 		stat(ft_strjoin(ptr->path, file->d_name), tmp_info);
 		ft_stat_cpy(ptr->info, tmp_info);
-		ptr->name = file->d_name;
+		ptr->name = ft_strdup(file->d_name);
 		ptr->next = (t_file *)malloc(sizeof(t_file));
 		ptr = ptr->next;
 		ptr->prev = adr;
