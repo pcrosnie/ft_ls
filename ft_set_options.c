@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 12:07:13 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/17 14:36:17 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/17 15:49:23 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int		*ft_detect_option(char *path)
 
 	i = 0;
 	options = (int *)malloc(sizeof(int) * 6);
-	options = ft_memset(options, 0, 6);
+	while (i < 6)
+		options[i++] = 0;
+	i = 0;
 	if (path[0] != '-')
 	{
 		options[5] = 2;
@@ -41,18 +43,23 @@ void	ft_set_options(DIR *dir, t_file *begin, char **path, int path_size)
 	int *options;
 
 	i = 1;
-	options = ft_detect_option(path[i])
+	options = ft_detect_option(path[i]);
 	if (options[5] != 2)
 		i++;
 //	if (option[0] == 1)
 //		ft_R_option()
+	if (i == path_size)
+	{
+		path_size++;
+		path[i] = ".";
+	}
 	while (i < path_size)
 	{
 		dir = opendir(path[i]);
 		if (!dir)
 			ft_error(path[i]);
 		if (options && options[4] == 1)
-			ft_l_option(path[i], begin, dir, );
+			ft_l_option(path[i], begin, dir);
 		else
 		{
 			begin = ft_retrieve(dir, begin, path[i]);
