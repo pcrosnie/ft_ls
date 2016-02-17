@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:24:20 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/16 14:52:33 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/17 12:57:59 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <sys/stat.h>
 # include <time.h>
 # include <grp.h>
+# include <errno.h>
+# include <stdio.h>
 # include <uuid/uuid.h>
 # include <pwd.h>
 # define DARWIN_FEATURE_64_BIT_INODE = 0
@@ -57,9 +59,13 @@ typedef struct s_info
 t_file *ft_retrieve(DIR *dir, t_file *begin, char *path);
 t_file *ft_sort_lex(t_file *begin);
 void	ft_l_display(t_file *begin);
+void	ft_l_option(char *path, t_file *begin, DIR *dir);
 t_file *ft_retrieves_date(t_file *begin);
 void	ft_retrieves_usr_gr_id(t_file *begin);
 void	ft_retrieves_hardlinks(t_file *begin);
+void	ft_error(char *str);
+void	ft_set_options(DIR *dir, t_file *begin, char **path, int path_size);
+void	ft_print_list(t_file *ptr, int a, int b);
 
 #endif
 

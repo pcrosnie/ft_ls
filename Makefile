@@ -6,7 +6,7 @@
 #    By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/20 12:13:09 by pcrosnie          #+#    #+#              #
-#    Updated: 2016/02/16 16:09:21 by pcrosnie         ###   ########.fr        #
+#    Updated: 2016/02/17 12:53:45 by pcrosnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = ft_ls
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC = libft.a main.c ft_sort.c ft_l_display.c ft_retrieves_ids.c
+SRC = libft.a main.c ft_sort.c ft_l_display.c ft_retrieves_ids.c ft_set_options.c
 
 all: $(NAME)
 
