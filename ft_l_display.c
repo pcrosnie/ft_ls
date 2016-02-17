@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 12:17:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/17 12:07:00 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/17 14:36:22 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	ft_l_display(t_file *begin)
 	i = 0;
 	ptr = begin;
 	ft_set_max_bytes_size(begin);
+	ft_putstr("total ");
+	ft_putchar('\n');
 	while (ptr->next != NULL)
 	{
 		tmp = ft_strlen(ft_itoa(ptr->info->st_size));

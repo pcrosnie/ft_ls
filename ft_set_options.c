@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 12:07:13 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/17 13:00:36 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/17 14:36:17 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ int		*ft_detect_option(char *path)
 	int i;
 
 	i = 0;
-	if (path[0] != '-')
-		return (NULL);
 	options = (int *)malloc(sizeof(int) * 6);
 	options = ft_memset(options, 0, 6);
+	if (path[0] != '-')
+	{
+		options[5] = 2;
+		return (options);
+	}
 	(ft_strstr(path, "R") != NULL) ? options[i++] = 1 : i++;
 	(ft_strstr(path, "a") != NULL) ? options[i++] = 1 : i++;
 	(ft_strstr(path, "r") != NULL) ? options[i++] = 1 : i++;
@@ -38,8 +41,9 @@ void	ft_set_options(DIR *dir, t_file *begin, char **path, int path_size)
 	int *options;
 
 	i = 1;
-	if ((options = ft_detect_option(path[i])))
-			i++;
+	options = ft_detect_option(path[i])
+	if (options[5] != 2)
+		i++;
 //	if (option[0] == 1)
 //		ft_R_option()
 	while (i < path_size)
@@ -48,12 +52,12 @@ void	ft_set_options(DIR *dir, t_file *begin, char **path, int path_size)
 		if (!dir)
 			ft_error(path[i]);
 		if (options && options[4] == 1)
-			ft_l_option(path[i], begin, dir);
+			ft_l_option(path[i], begin, dir, );
 		else
 		{
 			begin = ft_retrieve(dir, begin, path[i]);
 			begin = ft_sort_lex(begin);
-			ft_print_list(begin, 0, 0);
+			ft_print_list(begin, options[1], options[2]);
 		}
 		i++;
 	}

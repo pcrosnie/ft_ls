@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:22:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/17 13:03:33 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/17 14:36:23 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ void	ft_print_list(t_file *ptr, int a, int b)
 		}
 		ptr = ptr->next;
 	}
+	ptr = ptr->prev;
 	if (b == 1)
 	{
 		while (ptr != NULL)
 		{
 			if (a == 0)
 			{
-				while (ptr != NULL && ptr->name[0] == '.')
+				while (ptr->prev != NULL && ptr->name[0] == '.')
 					ptr = ptr->prev;
 			}
 			ft_putstr(ptr->name);
