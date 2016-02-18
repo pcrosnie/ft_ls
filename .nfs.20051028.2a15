@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 12:17:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/18 11:31:37 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/18 11:13:40 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,62 +59,20 @@ void	ft_set_rights(t_file *begin)
 	ft_putstr("  ");
 }
 
-void	ft_display_elem(t_file *ptr)
+void	ft_diplay_elem(t_file *begin)
 {
-	int 	tmp;
-	int		i;
-
-	tmp = ft_strlen(ft_itoa(ptr->info->st_size));
-	i = 0;
-	ft_set_rights(ptr);
-	ft_putstr(ptr->hard_links);
-	ft_putstr(ptr->usr_name);
-	ft_putstr(ptr->group_name);
-	ft_putchar(' ');
-	while (i <= ptr->max_bytes_size - tmp)
-	{
-		ft_putchar(' ');
-		i++;
-	}
-	ft_putnbr(ptr->info->st_size);
-	ft_putchar(' ');
-	ft_putstr(ptr->date);
-	ft_putchar(' ');
-	ft_putstr(ptr->name);
-	ft_putchar('\n');
-}
-
-int		ft_retrieves_total_blksize(t_file *begin, int option)
-{
-	t_file *ptr;
-	int nb;
-
-	ptr = begin;
-	nb = 0;
-	while (ptr->next != NULL)
-	{
-		if (option == 0)
-		{
-			while (ptr->next != NULL && ptr->name[0] == '.')
-				ptr = ptr->next;
-		}
-			nb += ptr->info->st_blocks;
-			ptr = ptr->next;
-	}
-	return (nb);
-}
-
+	
 
 void	ft_l_display(t_file *begin, int *options)
 {
 	t_file *ptr;
 	int i;
+	int tmp;
 
 	i = 0;
 	ptr = begin;
 	ft_set_max_bytes_size(begin);
 	ft_putstr("total ");
-	ft_putnbr(ft_retrieves_total_blksize(begin, options[1]));
 	ft_putchar('\n');
 	while (ptr->next != NULL)
 	{
@@ -124,7 +82,26 @@ void	ft_l_display(t_file *begin, int *options)
 				ptr = ptr->next;
 		}
 		if (options[2] == 0)
-			ft_display_elem(ptr);
+		{
+		tmp = ft_strlen(ft_itoa(ptr->info->st_size));
+		i = 0;
+		ft_set_rights(ptr);
+		ft_putstr(ptr->hard_links);
+		ft_putstr(ptr->usr_name);
+		ft_putstr(ptr->group_name);
+		ft_putchar(' ');
+		while (i <= ptr->max_bytes_size - tmp)
+		{
+			ft_putchar(' ');
+			i++;
+		}
+		ft_putnbr(ptr->info->st_size);
+		ft_putchar(' ');
+		ft_putstr(ptr->date);
+		ft_putchar(' ');
+		ft_putstr(ptr->name);
+		ft_putchar('\n');
+		}
 		ptr = ptr->next;
 	}
 	ptr = ptr->prev;
@@ -134,16 +111,10 @@ void	ft_l_display(t_file *begin, int *options)
 		{
 			if (options[1] == 0)
 			{
-				while (ptr != NULL && ptr->name[0] == '.')
-					ptr = ptr->prev;
+				while (ptr->next != NULL && ptr->name == '.')
+					ptr = ptr->next;
 			}
-			if (ptr)
-			{
-			ft_display_elem(ptr);
-			ptr = ptr->prev;
-			}
-		}
-	}
+			
 }
 
 t_file	*ft_retrieves_date(t_file *begin)

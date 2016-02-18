@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 12:07:13 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/17 15:49:23 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/18 11:06:07 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_set_options(DIR *dir, t_file *begin, char **path, int path_size)
 		if (!dir)
 			ft_error(path[i]);
 		if (options && options[4] == 1)
-			ft_l_option(path[i], begin, dir);
+			ft_l_option(path[i], begin, dir, options);
 		else
 		{
 			begin = ft_retrieve(dir, begin, path[i]);

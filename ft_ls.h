@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:24:20 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/17 14:09:19 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/18 10:58:50 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef struct s_info
 
 t_file *ft_retrieve(DIR *dir, t_file *begin, char *path);
 t_file *ft_sort_lex(t_file *begin);
-void	ft_l_display(t_file *begin);
-void	ft_l_option(char *path, t_file *begin, DIR *dir);
+void	ft_l_display(t_file *begin, int *options);
+void	ft_l_option(char *path, t_file *begin, DIR *dir, int *options);
 t_file *ft_retrieves_date(t_file *begin);
 void	ft_retrieves_usr_gr_id(t_file *begin);
 void	ft_retrieves_hardlinks(t_file *begin);

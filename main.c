@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:22:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/17 14:36:23 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/18 11:28:52 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,27 @@ void	ft_print_list(t_file *ptr, int a, int b)
 		{
 			if (a == 0)
 			{
-				while (ptr->prev != NULL && ptr->name[0] == '.')
+				while (ptr != NULL && ptr->name[0] == '.')
 					ptr = ptr->prev;
 			}
+			if (ptr)
+			{
 			ft_putstr(ptr->name);
 			ft_putchar('\n');
 			ptr = ptr->prev;
+			}
 		}
 	}
 }
 
-void	ft_l_option(char *path, t_file *begin, DIR *dir)
+void	ft_l_option(char *path, t_file *begin, DIR *dir, int *options)
 {
 	begin = ft_retrieve(dir, begin, path);
 	begin = ft_sort_lex(begin);
 	begin = ft_retrieves_date(begin);
 	ft_retrieves_usr_gr_id(begin);
 	ft_retrieves_hardlinks(begin);
-	ft_l_display(begin);
+	ft_l_display(begin, options);
 }
 
 void	ft_no_arg(DIR *dir, t_file *begin)
