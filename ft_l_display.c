@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 12:17:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/18 11:31:37 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/18 15:07:49 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,25 @@ void	ft_set_rights(t_file *begin)
 	ft_putstr("  ");
 }
 
+void	ft_set_min_maj(t_file *ptr)
+{
+	char *str;
+	char *str2;
+//	ft_putchar('\n');
+//	ft_putnbr((int)major(ptr->info->st_dev));
+//	ft_putchar('\n');
+//	ft_putnbr((int)minor(ptr->info->st_dev));
+//	ft_putchar('\n');
+	str = ft_itoa(major(ptr->info->st_dev));
+	str2 = ft_itoa(minor(ptr->info->st_dev));
+	while (ft_strlen(str) < ptr->min_max)
+		str = ft_strjoin(" ", str);
+	while (ft_strlen(str2) < ptr->maj_max)
+		str2 = ft_strjoin(" ", str2);
+	ft_putstr(str);
+	ft_putstr(str2);
+}
+
 void	ft_display_elem(t_file *ptr)
 {
 	int 	tmp;
@@ -71,13 +90,14 @@ void	ft_display_elem(t_file *ptr)
 	ft_putstr(ptr->usr_name);
 	ft_putstr(ptr->group_name);
 	ft_putchar(' ');
-	while (i <= ptr->max_bytes_size - tmp)
+	ft_set_min_maj(ptr);
+/*	while (i <= ptr->max_bytes_size - tmp)
 	{
 		ft_putchar(' ');
 		i++;
 	}
 	ft_putnbr(ptr->info->st_size);
-	ft_putchar(' ');
+	ft_putchar(' ');*/
 	ft_putstr(ptr->date);
 	ft_putchar(' ');
 	ft_putstr(ptr->name);
@@ -104,6 +124,33 @@ int		ft_retrieves_total_blksize(t_file *begin, int option)
 	return (nb);
 }
 
+void	ft_set_min_maj_max(t_file *begin)
+{
+	t_file *ptr;
+	int nb2;
+	int nb;
+
+	ptr = begin;
+	ptr->min_max = 0;
+	ptr->maj_max = 0;
+	nb = 0;
+	nb2 = 0;
+	while (ptr->next != NULL)
+	{
+		if (major(ptr->info->st_dev) > nb)
+			nb = major(ptr->info->st_dev);
+		if (minor(ptr->info->st_dev) > nb2)
+			nb2 = minor(ptr->info->st_dev);
+		ptr = ptr->next;
+	}
+	ptr = begin;
+	while (ptr->next != NULL)
+	{
+		ptr->min_max = nb2;
+		ptr->maj_max = nb;
+		ptr = ptr->next;
+	}
+}
 
 void	ft_l_display(t_file *begin, int *options)
 {

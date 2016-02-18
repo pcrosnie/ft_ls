@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:04:56 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/16 12:53:10 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/18 15:13:16 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_stat_cpy(t_info *info, struct stat *ptr)
 {
+	ft_putnbr(minor(info->st_dev));
+	ft_putchar('\n');
 	info->st_dev = ptr->st_dev;
 	info->st_mode = ptr->st_mode;
 	info->st_nlink = ptr->st_nlink;

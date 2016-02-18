@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:24:20 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/18 10:58:50 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/18 14:53:40 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <dirent.h>
 # include <sys/xattr.h>
 # include <sys/stat.h>
+# include <sys/types.h>
 # include <time.h>
 # include <grp.h>
 # include <errno.h>
@@ -34,6 +35,8 @@ typedef struct s_file
 	char *usr_name;
 	char *hard_links;
 	int		max_bytes_size;
+	size_t min_max;
+	size_t  maj_max;
 	struct s_info *info;
 	struct s_file *next;
 	struct s_file *prev;
