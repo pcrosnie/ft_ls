@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 12:17:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/26 12:19:34 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/26 17:45:41 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	ft_set_rights(t_file *begin)
 	mode_t val;
 
 	ptr = begin;
-	(S_ISCHR(ptr->info->st_mode)) ? ft_putchar('c') : 0;
 	(S_ISLNK(ptr->info->st_mode)) ? ft_putchar('l') : 0;
+	(S_ISCHR(ptr->info->st_mode)) ? ft_putchar('c') : 0;
 	(S_ISDIR(ptr->info->st_mode)) ? ft_putchar('d') : 0;
 	(S_ISREG(ptr->info->st_mode)) ? ft_putchar('-') : 0;
 	(S_ISFIFO(ptr->info->st_mode)) ? ft_putchar('p') : 0;
@@ -59,19 +59,85 @@ void	ft_set_rights(t_file *begin)
 	ft_putstr("  ");
 }
 
+void	ft_get_min_max(t_file *begin)
+{
+	t_file *ptr;
+	int tmp;
+	int max;
+
+	ptr = begin;
+	ptr->min_max = 0;
+	max = 0;
+	while (ptr->next != NULL)
+	{
+		tmp = ft_strlen(ft_itoa(minor(ptr->info->st_rdev)));
+		if (tmp > max)
+			max = tmp;
+		ptr = ptr->next;
+	}
+	ptr = begin;
+	while (ptr->next != NULL)
+	{
+		ptr->min_max = max;
+		ptr = ptr->next;
+	}
+}
+
+void	ft_get_maj_max(t_file *begin)
+{
+	t_file *ptr;
+	int tmp;
+	int max;
+
+	ptr = begin;
+	ptr->maj_max = 0;
+	max = 0;
+	while (ptr->next != NULL)
+	{
+		tmp = ft_strlen(ft_itoa(major(ptr->info->st_rdev)));
+		if (tmp > max)
+			max = tmp;
+		ptr = ptr->next;
+	}
+	ptr = begin;
+	while (ptr->next != NULL)
+	{
+		ptr->maj_max = max;
+		ptr = ptr->next;
+	}
+}
+
 void	ft_set_min_maj(t_file *ptr)
 {
 	char *str;
 	char *str2;
+	int i;
+
+	i = 0;
 	str = ft_itoa(major(ptr->info->st_rdev));
 	str2 = ft_itoa(minor(ptr->info->st_rdev));
-	while (ft_strlen(str) < ptr->min_max)
-		str = ft_strjoin(" ", str);
-	ft_strjoin(str, ", ");
-	while (ft_strlen(str2) < ptr->maj_max)
-		str2 = ft_strjoin(" ", str2);
+	while (ft_strlen(str) + i <= ptr->min_max)
+	{
+		ft_putchar(' ');
+		i++;
+	}
 	ft_putstr(str);
+	ft_putchar(',');
+	i = 0;
+	while (ft_strlen(str2) + i <= ptr->maj_max)
+	{
+		ft_putchar(' ');
+		i++;
+	}
+	ft_putchar(' ');
 	ft_putstr(str2);
+	while (ptr->prev != NULL)
+		ptr = ptr->prev;
+	while (ptr->next != NULL)
+	{
+		ptr->max_bytes_size = ptr->min_max + ptr->maj_max + 3;
+		ptr = ptr->next;
+	}
 }
 
 void	ft_display_elem(t_file *ptr)
@@ -86,13 +152,17 @@ void	ft_display_elem(t_file *ptr)
 	ft_putstr(ptr->usr_name);
 	ft_putstr(ptr->group_name);
 	ft_putchar(' ');
-	ft_set_min_maj(ptr);
-	while (i <= ptr->max_bytes_size - tmp)
+	if (S_ISCHR(ptr->info->st_mode) != 0 || S_ISBLK(ptr->info->st_mode) != 0)
+		ft_set_min_maj(ptr);
+	else
 	{
-		ft_putchar(' ');
-		i++;
+		while (i <= ptr->max_bytes_size - tmp)
+		{
+			ft_putchar(' ');
+			i++;
+		}
+		ft_putnbr(ptr->info->st_size);
 	}
-	ft_putnbr(ptr->info->st_size);
 	ft_putchar(' ');
 	ft_putstr(ptr->date);
 	ft_putchar(' ');
@@ -114,8 +184,8 @@ int		ft_retrieves_total_blksize(t_file *begin, int option)
 			while (ptr->next != NULL && ptr->name[0] == '.')
 				ptr = ptr->next;
 		}
-			nb += ptr->info->st_blocks;
-			ptr = ptr->next;
+		nb += ptr->info->st_blocks;
+		ptr = ptr->next;
 	}
 	return (nb);
 }
@@ -182,8 +252,8 @@ void	ft_l_display(t_file *begin, int *options)
 			}
 			if (ptr)
 			{
-			ft_display_elem(ptr);
-			ptr = ptr->prev;
+				ft_display_elem(ptr);
+				ptr = ptr->prev;
 			}
 		}
 	}

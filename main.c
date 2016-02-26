@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:22:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/18 11:28:52 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/26 15:18:15 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	ft_l_option(char *path, t_file *begin, DIR *dir, int *options)
 	begin = ft_retrieve(dir, begin, path);
 	begin = ft_sort_lex(begin);
 	begin = ft_retrieves_date(begin);
+	ft_get_min_max(begin);
+	ft_get_maj_max(begin);
 	ft_retrieves_usr_gr_id(begin);
 	ft_retrieves_hardlinks(begin);
 	ft_l_display(begin, options);
