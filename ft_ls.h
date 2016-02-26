@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:24:20 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/18 14:53:40 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/26 12:09:44 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@
 # include <dirent.h>
 # include <sys/xattr.h>
 # include <sys/stat.h>
-# include <sys/types.h>
 # include <time.h>
 # include <grp.h>
+# include <sys/types.h>
 # include <errno.h>
 # include <stdio.h>
 # include <uuid/uuid.h>
 # include <pwd.h>
-# define DARWIN_FEATURE_64_BIT_INODE = 0
 
 typedef struct s_file
 {

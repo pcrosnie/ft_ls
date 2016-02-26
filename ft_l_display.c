@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 12:17:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/18 15:07:49 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/02/26 12:19:34 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,11 @@ void	ft_set_min_maj(t_file *ptr)
 {
 	char *str;
 	char *str2;
-//	ft_putchar('\n');
-//	ft_putnbr((int)major(ptr->info->st_dev));
-//	ft_putchar('\n');
-//	ft_putnbr((int)minor(ptr->info->st_dev));
-//	ft_putchar('\n');
-	str = ft_itoa(major(ptr->info->st_dev));
-	str2 = ft_itoa(minor(ptr->info->st_dev));
+	str = ft_itoa(major(ptr->info->st_rdev));
+	str2 = ft_itoa(minor(ptr->info->st_rdev));
 	while (ft_strlen(str) < ptr->min_max)
 		str = ft_strjoin(" ", str);
+	ft_strjoin(str, ", ");
 	while (ft_strlen(str2) < ptr->maj_max)
 		str2 = ft_strjoin(" ", str2);
 	ft_putstr(str);
@@ -91,13 +87,13 @@ void	ft_display_elem(t_file *ptr)
 	ft_putstr(ptr->group_name);
 	ft_putchar(' ');
 	ft_set_min_maj(ptr);
-/*	while (i <= ptr->max_bytes_size - tmp)
+	while (i <= ptr->max_bytes_size - tmp)
 	{
 		ft_putchar(' ');
 		i++;
 	}
 	ft_putnbr(ptr->info->st_size);
-	ft_putchar(' ');*/
+	ft_putchar(' ');
 	ft_putstr(ptr->date);
 	ft_putchar(' ');
 	ft_putstr(ptr->name);
