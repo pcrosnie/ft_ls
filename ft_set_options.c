@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 12:07:13 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/02/18 11:06:07 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/02 16:34:57 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,20 @@ void	ft_set_options(DIR *dir, t_file *begin, char **path, int path_size)
 {
 	int i;
 	int *options;
+	char *tmp;
 
 	i = 1;
 	options = ft_detect_option(path[i]);
 	if (options[5] != 2)
 		i++;
-//	if (option[0] == 1)
-//		ft_R_option()
+	if (options[0] == 1)
+	{
+		tmp = ft_strdup(path[2]);
+		(path[2][ft_strlen(path[2])] != '/') ? tmp[ft_strlen(path[2])] = '/' : 0;
+		ft_R_option(dir, begin, tmp, options);
+	}
+	else
+	{
 	if (i == path_size)
 	{
 		path_size++;
@@ -67,5 +74,6 @@ void	ft_set_options(DIR *dir, t_file *begin, char **path, int path_size)
 			ft_print_list(begin, options[1], options[2]);
 		}
 		i++;
+	}
 	}
 }
