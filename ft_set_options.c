@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 12:07:13 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/03/02 16:34:57 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/02 16:38:55 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_set_options(DIR *dir, t_file *begin, char **path, int path_size)
 	if (options[0] == 1)
 	{
 		tmp = ft_strdup(path[2]);
-		(path[2][ft_strlen(path[2])] != '/') ? tmp[ft_strlen(path[2])] = '/' : 0;
+		(path[2][ft_strlen(path[2])] == '/') ? tmp[ft_strlen(path[2])] = '\0' : 0;
 		ft_R_option(dir, begin, tmp, options);
 	}
 	else

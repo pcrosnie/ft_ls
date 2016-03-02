@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 17:37:49 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/03/02 16:35:25 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/02 16:46:43 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,13 @@ void	ft_R_option(DIR *dir, t_file *ptr, char *path, int *options)
 		{
 			if (S_ISDIR(ptr->info->st_mode))
 			{
+				tmp_path = ft_strdup(path);
+				tmp_path = ft_strjoin(tmp_path, "/");
 				tmp_path = ft_strjoin(tmp_path, ptr->name);
 				ft_putstr(tmp_path);
 				ft_putchar('\n');
 				ft_R_option(dir, ptr, tmp_path, options);
+				free(tmp_path);
 			}
 			ptr = ptr->next;
 		}
