@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 12:17:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/03/02 11:54:41 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/02 11:44:46 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,19 +138,6 @@ void	ft_set_min_maj(t_file *ptr)
 		ptr->max_bytes_size = ptr->min_max + ptr->maj_max + 3;
 		ptr = ptr->next;
 	}
-}
-
-void	ft_link_display(t_file *ptr)
-{
-	char *buf;
-	int ret;
-
-	buf = (char *)malloc(sizeof(char) * 1000);
-	(ptr->path[ft_strlen(ptr->path)] != '/') ? ptr->path[ft_strlen(ptr->path)] = '/' : 0;
-	ret = readlink(ft_strjoin(ptr->path, ptr->name), buf, 1000);
-	buf[ret] = '\0';
-	ft_putstr(" -> ");
-	ft_putstr(buf);
 }
 
 void	ft_display_elem(t_file *ptr)
