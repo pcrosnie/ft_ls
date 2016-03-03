@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:22:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/03/02 15:06:13 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/03 11:18:51 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_print_list(t_file *ptr, int a, int b)
 	}
 }
 
-void	ft_l_option(char *path, t_file *begin, DIR *dir, int *options)
+t_file	*ft_l_option(char *path, t_file *begin, DIR *dir, int *options)
 {
 	begin = ft_retrieve(dir, begin, path);
 	begin = ft_sort_lex(begin);
@@ -58,6 +58,7 @@ void	ft_l_option(char *path, t_file *begin, DIR *dir, int *options)
 	ft_retrieves_usr_gr_id(begin);
 	ft_retrieves_hardlinks(begin);
 	ft_l_display(begin, options);
+	return (begin);
 }
 
 void	ft_no_arg(DIR *dir, t_file *begin)
