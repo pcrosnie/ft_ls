@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:04:56 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/03/02 12:03:28 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/03 15:28:31 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,26 +72,38 @@ void	ft_swap(t_file *ptr, t_file *ptr2)
 	ptr2->info = tmp_info;
 }
 
+int		ft_is_maj(char c)
+{
+	if (c < 65 || c > 90)
+		return (0);
+	return (1);
+}
+
 t_file	*ft_sort_lex(t_file *begin)
 {
 	t_file *ptr;
 	t_file *ptr2;
+	int a;
 
-	ptr = begin;
-	ptr2 = ptr;
-	ptr = ptr->next;
+	a = 0;
+	ptr = begin->next;
+	ptr2 = begin;
 	while (ptr != NULL && ptr->name)
 	{
-		if (ft_strcmp(ptr2->name, ptr->name) > 0)
+		if (ft_strcmp(ptr->name, ptr2->name) < 0)
 		{
+			a = 0;
 			ft_swap(ptr2, ptr);
+			if (ptr)
+			{
 			ptr = begin->next;
 			ptr2 = begin;
+			}
 		}
 		else
 		{
-			ptr = ptr->next;
-			ptr2 = ptr2->next;
+		ptr = ptr->next;
+		ptr2 = ptr2->next;
 		}
 	}
 	return (begin);

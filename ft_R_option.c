@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 17:37:49 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/03/03 11:19:53 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/03 14:48:40 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	ft_R_option(char *path, int *options)
 	if (dir)
 	{
 		ptr = ft_retrieves_n_display(ptr, path, options, dir);
+		closedir(dir);
 		while (ptr->next != NULL)
 		{
 			if (S_ISDIR(ptr->info->st_mode) && ptr->name[0] != '.')
@@ -66,10 +67,3 @@ void	ft_R_option(char *path, int *options)
 		}
 	}
 }
-
-
-
-
-
-
-
