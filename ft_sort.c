@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:04:56 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/03/03 15:28:31 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/04 16:13:29 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,14 @@ t_file	*ft_sort_lex(t_file *begin)
 	a = 0;
 	ptr = begin->next;
 	ptr2 = begin;
-	while (ptr != NULL && ptr->name)
+	while (ptr->next != NULL && ptr->name)
 	{
 		if (ft_strcmp(ptr->name, ptr2->name) < 0)
 		{
 			a = 0;
-			ft_swap(ptr2, ptr);
 			if (ptr)
 			{
+			ft_swap(ptr2, ptr);
 			ptr = begin->next;
 			ptr2 = begin;
 			}

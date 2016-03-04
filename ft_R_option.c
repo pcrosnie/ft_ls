@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 17:37:49 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/03/03 14:48:40 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/04 15:29:52 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,25 @@ t_file	*ft_retrieves_n_display(t_file *ptr, char *path, int *options, DIR *dir)
 	return (ptr);
 }
 
+void	ft_del_list(t_file *begin)
+{
+	t_file *ptr;
+
+	ptr = begin;
+	while (ptr != NULL)
+	{
+	//	ft_memdel((void **)&(ptr->name));
+		ft_memdel((void **)&(ptr->date));
+	//	ft_memdel((void **)&(ptr->path));
+		ft_memdel((void **)&(ptr->group_name));
+		ft_memdel((void **)&(ptr->usr_name));
+		ft_memdel((void **)&(ptr->hard_links));
+		ft_memdel((void **)&(ptr->info));
+		ptr = ptr->next;
+	}
+}
+		
+
 void	ft_R_option(char *path, int *options)
 {
 	DIR *dir;
@@ -65,5 +84,6 @@ void	ft_R_option(char *path, int *options)
 			}
 			ptr = ptr->next;
 		}
+//		ft_del_list(ptr);
 	}
 }

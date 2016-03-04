@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 12:17:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/03/02 11:54:41 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/04 15:27:47 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,9 @@ int		ft_retrieves_total_blksize(t_file *begin, int option)
 				ptr = ptr->next;
 		}
 		nb += ptr->info->st_blocks;
+		if (ptr->next != NULL)
 		ptr = ptr->next;
+		ft_putchar('E');
 	}
 	return (nb);
 }

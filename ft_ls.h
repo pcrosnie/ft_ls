@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:24:20 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/03/03 11:19:25 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/04 14:55:47 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_info
 	uint32_t        st_gen;
 }				t_info;
 
+int		ft_retrieves_total_blksize(t_file *begin, int options);
 t_file *ft_retrieve(DIR *dir, t_file *begin, char *path);
 t_file *ft_sort_lex(t_file *begin);
 void	ft_l_display(t_file *begin, int *options);

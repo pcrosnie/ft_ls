@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:22:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/03/03 15:25:49 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/04 14:47:08 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,21 @@ void	ft_print_list(t_file *ptr, int a, int b)
 
 t_file	*ft_l_option(char *path, t_file *begin, DIR *dir, int *options)
 {
+	ft_putchar('A');
 	begin = ft_retrieve(dir, begin, path);
+	ft_putchar('B');
 	begin = ft_sort_lex(begin);
+	ft_putchar('C');
 	begin = ft_retrieves_date(begin);
+	ft_putchar('D');
 	ft_get_min_max(begin);
+	ft_putchar('E');
 	ft_get_maj_max(begin);
+	ft_putchar('F');
 	ft_retrieves_usr_gr_id(begin);
+	ft_putchar('G');
 	ft_retrieves_hardlinks(begin);
+	if (ft_retrieves_total_blksize(begin, options[1]) != 0)
 	ft_l_display(begin, options);
 	return (begin);
 }
