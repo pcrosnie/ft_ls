@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 17:37:49 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/03/04 15:29:52 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/08 11:16:56 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,35 +40,67 @@ t_file	*ft_retrieves_n_display(t_file *ptr, char *path, int *options, DIR *dir)
 	return (ptr);
 }
 
-void	ft_del_list(t_file *begin)
+void	ft_del_list(t_file **begin, int *options)
 {
 	t_file *ptr;
 
-	ptr = begin;
-	while (ptr != NULL)
+	ptr = *begin;
+	while (ptr->next->next != NULL)
 	{
-	//	ft_memdel((void **)&(ptr->name));
-		ft_memdel((void **)&(ptr->date));
-	//	ft_memdel((void **)&(ptr->path));
-		ft_memdel((void **)&(ptr->group_name));
-		ft_memdel((void **)&(ptr->usr_name));
-		ft_memdel((void **)&(ptr->hard_links));
-		ft_memdel((void **)&(ptr->info));
+		if (options[4] == 1)
+		{
+		ft_putstr("DATE\n");
+		free(ptr->date);
+		ft_putstr("NAME\n");
+		free(ptr->group_name);
+		ft_putstr("GROUP\n");
+		free(ptr->usr_name);
+		ft_putstr("LINKS\n");
+		free(ptr->hard_links);
+		ft_putstr("INFO\n");
+		free(ptr->info);
+		}
 		ptr = ptr->next;
 	}
 }
-		
+
+char	*ft_set_path(char *path, t_file *ptr)
+{
+	char *tmp_path;
+
+	tmp_path = ft_strdup(path);
+	tmp_path = ft_strjoin(tmp_path, "/");
+	tmp_path = ft_strjoin(tmp_path, ptr->name);
+	return (tmp_path);
+}
+/*
+void	ft_R_option(char *path, int *options)
+{
+	DIR *dir;
+	t_file *ptr;
+	char *tmp_path;
+
+	tmp_path = ft_strdup(path);
+	while ((dir = opendir(tmp_path)))
+	{
+		ptr = ft_retrieves_n_display(ptr, path, options, dir);
+		closedir(dir);
+*/		
+
 
 void	ft_R_option(char *path, int *options)
 {
 	DIR *dir;
 	t_file *ptr = NULL;
+	t_file *tmp_ptr;
 	char *tmp_path;
 	
 	dir = opendir(path);
 	if (dir)
 	{
 		ptr = ft_retrieves_n_display(ptr, path, options, dir);
+		tmp_ptr = ptr;
+		ft_del_list(&tmp_ptr, options);
 		closedir(dir);
 		while (ptr->next != NULL)
 		{
@@ -80,10 +112,12 @@ void	ft_R_option(char *path, int *options)
 				ft_putstr(tmp_path);
 				ft_putchar('\n');
 				ft_R_option(tmp_path, options);
-				tmp_path = ft_memset(tmp_path, '\0', ft_strlen(tmp_path));
+	//			free(tmp_path);
 			}
 			ptr = ptr->next;
 		}
-//		ft_del_list(ptr);
+//		if (tmp_path)
+//		free(tmp_path);
+		ft_del_list(&tmp_ptr, options);
 	}
 }

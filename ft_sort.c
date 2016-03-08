@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:04:56 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/03/04 16:13:29 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/03/08 11:18:20 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_file	*ft_retrieve(DIR *dir, t_file *begin, char *path)
 		adr = adr->next;
 		ptr->info = (t_info *)malloc(sizeof(t_info));
 	}
+	free(tmp_info);
 	ptr = NULL;
 	return (begin);
 }
@@ -90,7 +91,7 @@ t_file	*ft_sort_lex(t_file *begin)
 	ptr2 = begin;
 	while (ptr->next != NULL && ptr->name)
 	{
-		if (ft_strcmp(ptr->name, ptr2->name) < 0)
+		if (ft_strncmp(ptr->name, ptr2->name, ft_strlen(ptr->name) - 2) < 0)
 		{
 			a = 0;
 			if (ptr)
@@ -102,8 +103,8 @@ t_file	*ft_sort_lex(t_file *begin)
 		}
 		else
 		{
-		ptr = ptr->next;
-		ptr2 = ptr2->next;
+			ptr = ptr->next;
+			ptr2 = ptr2->next;
 		}
 	}
 	return (begin);
